@@ -21,4 +21,18 @@ export class PedidoService {
     });
   }
 
+  getByFilter(filter:string){
+    return new Promise<any>((res, rej) => {
+      this.api.get('pedidos?filter={"include":{"relation":"user","scope":{"include":"identities"}}}').subscribe(
+        data => {
+          console.log(data)
+          res(data);
+        },
+        error => {
+          rej(error);
+        }
+      );
+    });
+  }
+
 }
