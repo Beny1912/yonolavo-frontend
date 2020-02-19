@@ -21,11 +21,22 @@ export class PedidoService {
     });
   }
 
-  getByFilter(filter:string){
+  patch(params) {
+    return new Promise<any>((resolve, reject) => {
+      this.api.patch("pedidos/" + params.id, params).subscribe(res => {
+        resolve(res)
+      }, error => {
+        reject(error)
+      }
+      )
+    })
+  }
+
+  getByFilter(filter: string) {
     return new Promise<any>((res, rej) => {
       this.api.get('pedidos?filter={"include":{"relation":"user","scope":{"include":"identities"}}}').subscribe(
         data => {
-          console.log(data)
+
           res(data);
         },
         error => {

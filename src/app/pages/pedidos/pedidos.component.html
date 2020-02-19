@@ -1,21 +1,56 @@
 <div>
+
+  <input type="text" style="padding:8px;margin:15px auto;width:30%;" placeholder="Type to filter the name column..."
+    (keyup)="updateFilter($event)" />
+  <ngx-datatable #table class="material" [columns]="columns" [columnMode]="ColumnMode.force" [headerHeight]="50"
+    [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows">
+
+    <ngx-datatable-column name="estado" [width]="80">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+        <span title="Double click to edit" (dblclick)="editing[rowIndex + '-estado'] = true"
+          *ngIf="!editing[rowIndex + '-estado']">
+          {{ value }}
+        </span>
+        <select *ngIf="editing[rowIndex + '-estado']" (blur)="editing[rowIndex + '-estado'] = false"
+          (change)="updateValue($event, 'estado', rowIndex)" [value]="value">
+          <option value="Recibido">Recibido</option>
+          <option value="Recogido">Recogido</option>
+          <option value="Realizado">Realizado</option>
+          <option value="Espera de recogida">Espera de recogida</option>
+          <option value="Lavando">Lavando</option>
+          <option value="Secando">Secando</option>
+          <option value="Planchando">Planchando</option>
+          <option value="En camino">En camino</option>
+          <option value="Entregado">Entregado</option>
+        </select>
+      </ng-template>
+    </ngx-datatable-column>
   
-  <input
-    type="text"
-    style="padding:8px;margin:15px auto;width:30%;"
-    placeholder="Type to filter the name column..."
-    (keyup)="updateFilter($event)"
-  />
-  <ngx-datatable
-    #table
-    class="material"
-    [columns]="columns"
-    [columnMode]="ColumnMode.force"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    rowHeight="auto"
-    [limit]="10"
-    [rows]="rows"
-  >
+
+    <ngx-datatable-column name ="Usuario" prop="user.username">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+
+
+    <ngx-datatable-column name ="Fecha" prop="fecha">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name ="Domicilio" prop="domicilio">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name ="Caracteristicas" prop="caracteristicas">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+
   </ngx-datatable>
 </div>
