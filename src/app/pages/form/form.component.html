@@ -1,0 +1,28 @@
+<div class="container">
+<h2 class="pb-4">CREAR PEDIDO</h2>
+    <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Color</label>
+          <input  type="text" class="form-control" id="exampleFormControlInput1" name="color" [(ngModel)]="color">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Kg</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="peso" [(ngModel)]="peso">
+          </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Tipo lavado</label>
+          <select class="form-control" id="exampleFormControlSelect1" name="tipo" [(ngModel)]="tipo">
+            <option value="normal">Normal</option>
+            <option value="delicado">Delicado</option>
+          
+          </select>
+        </div>
+    <button class="btn btn-success" type="submit" (click)="submit()">Crear</button>
+       <!--  <div class="form-group">
+          <label for="exampleFormControlTextarea1">Example textarea</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div> -->
+      </form>
+
+</div>

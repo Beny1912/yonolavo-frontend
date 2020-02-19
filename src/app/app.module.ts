@@ -9,14 +9,16 @@ import { UsuarioService } from './services/usuario.service';
 import { PedidoService } from './services/pedido.service';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { RouterModule, Routes } from '@angular/router';
-import{NgxDatatableModule } from '@swimlane/ngx-datatable'
+import{NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FormsModule } from '@angular/forms';
+import { FormComponent } from './pages/form/form.component'
 const appRoutes: Routes = [
   { path: 'pedidos', component: PedidosComponent },
-
+  { path: 'form', component: FormComponent },
 
   {
     path: '',
-    redirectTo: '/heroes',
+    redirectTo: '/pedidos',
     pathMatch: 'full'
   },
   { path: '**', component: PedidosComponent }
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    PedidosComponent
+    PedidosComponent,
+    FormComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -36,7 +39,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    FormsModule
   ],
   providers: [
     ApiService,

@@ -46,4 +46,16 @@ export class PedidoService {
     });
   }
 
+
+  post(params) {
+    return new Promise<any>((res, rej) => {
+      this.api.post("pedidos", params).subscribe(result => {
+        res(result)
+      }, err => {
+        rej(err)
+      })
+
+
+    })
+  }
 }

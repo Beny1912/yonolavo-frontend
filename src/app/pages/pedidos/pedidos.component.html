@@ -1,7 +1,11 @@
-<div>
+<div class="container-fluid p-4">
+<div class="form-group">
 
-  <input type="text" style="padding:8px;margin:15px auto;width:30%;" placeholder="Type to filter the name column..."
+  <input type="text"   style="padding:8px;margin:15px auto;width:30%;" placeholder="Type to filter the name column..."
     (keyup)="updateFilter($event)" />
+
+<button routerLink="/form" class="btn btn-primary float-right">Crear Pedido</button>
+</div>
   <ngx-datatable #table class="material" [columns]="columns" [columnMode]="ColumnMode.force" [headerHeight]="50"
     [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows">
 
